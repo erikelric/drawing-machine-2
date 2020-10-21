@@ -1,15 +1,24 @@
 let array = [];
+let noiseOffset = 0.0;
+let strokeWidth = 5;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(220, 50, 133);
 
-  strokeWeight(5);
+
 
 
 }
 
 function draw() {
+
+  background(220, 50, 133, 5);
+  strokeWeight(strokeWidth);
+
+  noiseOffset =+ 0.05;
+  strokeWidth = noise(noiseOffset) * 100;
+
 
 if (mouseIsPressed){
   // line(mouseX, mouseY, pmouseX, pmouseY);
@@ -23,18 +32,12 @@ if (mouseIsPressed){
 
 function keyTyped(){
 
-    if (key === `s`){
+    if (key === `s`) {
       //save this image
       saveCanvas(`fileName`, `png`);
-    } else if (key === 'd'){
-      // diplay the image
-      background(255);
-
-      for(let i = 0; i < array.length; i++){
-        // line(array[i][0], array[i][1], array[i + 1][0], array[i + 1][1]);
-        curveVertex(array[i][0], array[i][1])
-      }
-      endShape();
+    } else if (key === 'c'){
+      // clear the image
+      clear();
 
     }
 
